@@ -1,0 +1,43 @@
+'use strict'
+
+require('babel-register')({
+  plugins: ['transform-async-to-generator']
+})
+
+const yargs = require('yargs')
+const uploadServer = require('../lib/upload-server')
+
+const argv = yargs
+      .usage('Usage: $0 [options]')
+      .alias('h', 'host')
+      .nargs('h', 1)
+      .default('h', '0.0.0.0')
+      .describe('h', 'host to listen')
+
+      .alias('p', 'port')
+      .nargs('p', 1)
+      .default('p', 5000)
+      .describe('p', 'port to listen')
+
+      .alias('d', 'dir')
+      .nargs('d', 1)
+      .default('d', './')
+      .describe('d', 'directory to upload')
+
+      .help()
+      .argv
+
+const { h: host, p: port, d: dir } = argv
+const server = uploadServer(dir)
+
+server.listen(port, host)
+
+process.on('uncaughtException', (err) => {
+  if (err.errno === 'EADDRINUSE') {
+    console.error(`${err.address}:${err.port} is in use.`)
+  } else {
+    console.error(err)
+  }
+
+  process.exit(1)
+})

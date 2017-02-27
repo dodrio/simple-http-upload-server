@@ -1,0 +1,32 @@
+{
+  "name": "simple-http-upload-server",
+  "version": "1.0.0",
+  "description": "Simple HTTP upload server.",
+  "bin": "bin/simple-http-upload-server",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:m31271n/simple-http-upload-server.git"
+  },
+  "keywords": [
+    "http",
+    "fileupload",
+    "upload"
+  ],
+  "author": "m31271n",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/m31271n/simple-http-upload-server/issues"
+  },
+  "homepage": "https://github.com/m31271n/simple-http-upload-server",
+  "dependencies": {
+    "babel-plugin-transform-async-to-generator": "^6.22.0",
+    "babel-register": "^6.23.0",
+    "es6-promisify": "^5.0.0",
+    "koa": "^2.0.1",
+    "koa-body": "2",
+    "yargs": "^6.6.0"
+  }
+}
