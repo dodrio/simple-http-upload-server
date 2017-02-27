@@ -15,7 +15,7 @@ No one is usable on npm.
 ## Installation
 
 ```sh
-npm install -g simple-http-upload-server
+shell> npm install -g simple-http-upload-server
 ```
 
 ## Basic usage
@@ -28,3 +28,6 @@ shell> cd /tmp/upload
 # launch server
 shell> simple-http-upload-server
 ```
+
+## Warning
+This server is designed for LAN rather than WAN. Use it in reliable network, please.
