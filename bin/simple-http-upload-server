@@ -27,13 +27,17 @@ const argv = yargs
       .argv
 
 const { h: host, p: port, d: dir } = argv
+const addr = `${host}:${port}`
 const server = uploadServer(dir)
 
-server.listen(port, host)
+server.listen(port, host, () => {
+  console.log(`Listening on ${addr}`)
+  console.log('Hit CTRL-C to stop the server')
+})
 
 process.on('uncaughtException', (err) => {
   if (err.errno === 'EADDRINUSE') {
-    console.error(`${err.address}:${err.port} is in use.`)
+    console.error(`${addr} is in use.`)
   } else {
     console.error(err)
   }
