@@ -3,6 +3,7 @@
 
 'use strict'
 
+const os = require('os')
 const yargs = require('yargs')
 const uploadServer = require('../lib/upload-server')
 
@@ -29,9 +30,19 @@ const argv = yargs
 const { h: host, p: port, d: dir } = argv
 const addr = `${host}:${port}`
 const server = uploadServer(dir)
+const ifaces = os.networkInterfaces()
 
 server.listen(port, host, () => {
-  console.log(`Listening on ${addr}`)
+  console.log(`Available on:`)
+  Object.keys(ifaces).forEach(i => {
+    const iface = ifaces[i]
+    iface.map(detail => {
+      const { family, address } = detail
+      if (family === 'IPv4') {
+        console.log(`  http://${address}:${port}`)
+      }
+    })
+  })
   console.log('Hit CTRL-C to stop the server')
 })
 
