@@ -1,10 +1,7 @@
-#!/usr/bin/env node
+#!/bin/sh
+":" // a shebang hack; exec /usr/bin/env node --harmony-async-await "$0" "$@"
 
 'use strict'
-
-require('babel-register')({
-  plugins: ['transform-async-to-generator']
-})
 
 const yargs = require('yargs')
 const uploadServer = require('../lib/upload-server')
