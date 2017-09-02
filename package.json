@@ -23,12 +23,12 @@
   "homepage": "https://github.com/m31271n/simple-http-upload-server",
   "dependencies": {
     "es6-promisify": "^5.0.0",
-    "koa": "^2.0.1",
+    "koa": "^2.3.0",
     "koa-body": "2",
-    "yargs": "^6.6.0"
+    "yargs": "^8.0.2"
   },
   "engines": {
-    "node": ">=7.0.0"
+    "node": ">=8.0.0"
   },
   "engineStrict": true
 }
